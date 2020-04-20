@@ -34,13 +34,13 @@ class RegisterUser extends Component {
                     <form style={style.form}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <TextField name="User" fullWidth label="Usuario"/>
+                                <TextField name="User" fullWidth label="Email"/>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField name="Email" fullWidth label="Email"/>
                             </Grid>
                             <Grid item xs={12}>
-                                <TextField type ="password" name="Password" fullWidth label="Contraseña"/>
+                                <TextField type ="password" name="Contraseña" fullWidth label="Contraseña"/>
                             </Grid>
                             <Grid item xs={12}>
                                 <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">

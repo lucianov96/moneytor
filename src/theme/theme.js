@@ -11,8 +11,7 @@ const theme = createMuiTheme({
         secondary : {
             main : '#1f1f1f',
         },
-    },
-    spacing: 10
+    }
 });
 
 export default theme;

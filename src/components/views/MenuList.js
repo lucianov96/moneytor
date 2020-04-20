@@ -5,13 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     root: {
-        width: '100vw',
         backgroundColor: '#1e1e1e',
         color: 'white',
         height: '100%',
-        [theme.breakpoints.up("md")]: {
-            maxWidth: 120,
-        }
     }
   });
 
