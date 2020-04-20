@@ -34,7 +34,7 @@ class RegisterUser extends Component {
                     <form style={style.form}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <TextField name="User" fullWidth label="Email"/>
+                                <TextField name="User" fullWidth label="Usuario"/>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField name="Email" fullWidth label="Email"/>

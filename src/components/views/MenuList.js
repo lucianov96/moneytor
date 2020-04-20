@@ -8,6 +8,14 @@ const styles = theme => ({
         backgroundColor: '#1e1e1e',
         color: 'white',
         height: '100%',
+    },
+    rootHover: {
+        [theme.breakpoints.down("xs")]: {
+            textAlign: "center"
+        },
+        '&:hover': {
+            backgroundColor: '#2e2e2e',
+        }
     }
   });
 
@@ -21,16 +29,16 @@ class MenuList extends Component {
         return (
             <div className = {classes.root}>
                 <List>
-                    <ListItemLink href="#simple-list">
+                    <ListItemLink className = {classes.rootHover} href="../expenses">
                         <ListItemText primary="Gastos" />
                     </ListItemLink>
-                    <ListItemLink href="#simple-list">
+                    <ListItemLink className = {classes.rootHover} href="../reports">
                         <ListItemText primary="Reportes" />
                     </ListItemLink>
-                    <ListItemLink href="#simple-list">
+                    <ListItemLink className = {classes.rootHover} href="../cards">
                         <ListItemText primary="Informes" />
                     </ListItemLink>
-                    <ListItemLink href="#simple-list">
+                    <ListItemLink className = {classes.rootHover} href="../cards">
                         <ListItemText primary="Tarjetas" />
                     </ListItemLink>
                 </List>

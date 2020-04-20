@@ -21,6 +21,9 @@ const style = {
     form: {
         marginTop: 10
     },
+    select: {
+        marginTop: 10,
+    },
     submit: {
         marginTop: 10,
         marginBottom: 10
@@ -64,7 +67,13 @@ class AddCard extends Component {
                                         min={0} type ="number" name="FinalNumbers" fullWidth/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select labelId="mark" id="demo-simple-select" fullWidth>
+                                        <Select labelId="mark" id="demo-simple-select" style={style.select} fullWidth>
+                                            <MenuItem value={"Debito"}>Tarjeta de débito</MenuItem>
+                                            <MenuItem value={"Credito"}>Tarjeta de crédito</MenuItem>
+                                        </Select>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Select labelId="mark" id="demo-simple-select" style={style.select} fullWidth>
                                             <MenuItem value={"VS"}>VISA</MenuItem>
                                             <MenuItem value={"MC"}>Master Card</MenuItem>
                                             <MenuItem value={"AE"}>American Express</MenuItem>
@@ -72,7 +81,7 @@ class AddCard extends Component {
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">
-                                            Agregar Tarjeta
+                                            Registrar Tarjeta
                                         </Button> 
                                     </Grid>
                                 </Grid>
