@@ -35,7 +35,7 @@ class MenuList extends Component {
                     <ListItemLink className = {classes.rootHover} href="../reports">
                         <ListItemText primary="Reportes" />
                     </ListItemLink>
-                    <ListItemLink className = {classes.rootHover} href="../cards">
+                    <ListItemLink className = {classes.rootHover} href="../informs">
                         <ListItemText primary="Informes" />
                     </ListItemLink>
                     <ListItemLink className = {classes.rootHover} href="../cards">

@@ -9,6 +9,8 @@ import RegisterUser from './components/security/RegisterUser';
 import AddCard from './components/entities/AddCard';
 import AddExpense from './components/entities/AddExpense';
 import Reports from './components/entities/Reports';
+import Informs from './components/entities/Informs';
+import Expenses from './components/entities/Expenses';
 
 class App extends Component{
   render(){
@@ -22,6 +24,8 @@ class App extends Component{
               <Route path="/cards/add-card" exact component={AddCard}></Route>
               <Route path="/expenses/add-expense" exact component={AddExpense}></Route>
               <Route path="/reports" exact component={Reports}></Route>
+              <Route path="/informs" exact component={Informs}></Route>
+              <Route path="/expenses" exact component={Expenses}></Route>
             </Switch>
           </Grid>
         </MuiThemeProvider>
