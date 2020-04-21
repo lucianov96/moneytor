@@ -10,19 +10,16 @@ const style = {
         padding: 16,
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
-    },
-    center: {
-        textAlign: "center"
+        alignItems: "center",
     },
     avatar: {
         margin: 8,
     },
     form: {
-        marginTop: 10
+        marginTop: 10,
     },
     select: {
-        marginTop: 10,
+        marginTop: 16,
     },
     submit: {
         marginTop: 10,
@@ -30,7 +27,7 @@ const style = {
     }
   }
 
-class AddExpense extends Component {
+class Reports extends Component {
     render() {
         return (
             <Container disableGutters maxWidth="xl">
@@ -41,17 +38,16 @@ class AddExpense extends Component {
                     <Grid item sm={10} xs={12}>
                         <div style={style.paper}>
                             <Typography component="h1" variant="h5">
-                                Nuevo gasto
+                                Reportes
                             </Typography>
                             <form style={style.form}>
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2}>   
                                     <Grid item xs={12}>
-                                        <TextField name="Description" fullWidth label="Descripcion del gasto"/>
+                                        <TextField name="Description" fullWidth label="Descripción"/>
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Select displayEmpty value="" style={style.select} fullWidth>
-                                            <MenuItem value="" disabled>Grupo</MenuItem>
-                                            <MenuItem value={"VS"}>Grupo 1</MenuItem>
+                                            <MenuItem value="">Grupo</MenuItem>
                                         </Select>
                                     </Grid>
                                     <Grid item xs={12}>
@@ -62,13 +58,32 @@ class AddExpense extends Component {
                                             <MenuItem value={"TC"}>Tarjeta de crédito</MenuItem>
                                             <MenuItem value={"TB"}>Transferencia bancaria</MenuItem>
                                         </Select>
+                                    </Grid> 
+                                    <Grid item md={6} xs={12}>
+                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                            <MenuItem value="" disabled>El importe debe ser</MenuItem>
+                                            <MenuItem value={"equal"}>Igual a</MenuItem>
+                                            <MenuItem value={"less"}>Mayor a</MenuItem>
+                                            <MenuItem value={"mess"}>Menor a</MenuItem>
+                                        </Select>
+                                    </Grid>    
+                                    <Grid item md={6} xs={12}>
+                                        <TextField name="Amount" fullWidth label="Importe"/>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField type="number" name="Amount" fullWidth label="Importe"/>
+                                    <Grid item md={6} xs={12}>
+                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                            <MenuItem value="" disabled>La fecha debe ser</MenuItem>
+                                            <MenuItem value={"equal"}>Igual a</MenuItem>
+                                            <MenuItem value={"less"}>Mayor a</MenuItem>
+                                            <MenuItem value={"mess"}>Menor a</MenuItem>
+                                        </Select>
+                                    </Grid>    
+                                    <Grid item md={6} xs={12}>
+                                        <TextField name="Date" type="date" style={style.select} fullWidth/>
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">
-                                            Registrar Gasto
+                                            Buscar
                                         </Button> 
                                     </Grid>
                                 </Grid>
@@ -81,5 +96,4 @@ class AddExpense extends Component {
     }
 }
 
-export default AddExpense;
-
+export default Reports;

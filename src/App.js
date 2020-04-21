@@ -8,6 +8,7 @@ import theme from './theme/theme';
 import RegisterUser from './components/security/RegisterUser';
 import AddCard from './components/entities/AddCard';
 import AddExpense from './components/entities/AddExpense';
+import Reports from './components/entities/Reports';
 
 class App extends Component{
   render(){
@@ -20,6 +21,7 @@ class App extends Component{
               <Route path="/register-user" exact component={RegisterUser}></Route>
               <Route path="/cards/add-card" exact component={AddCard}></Route>
               <Route path="/expenses/add-expense" exact component={AddExpense}></Route>
+              <Route path="/reports" exact component={Reports}></Route>
             </Switch>
           </Grid>
         </MuiThemeProvider>
