@@ -11,6 +11,7 @@ import AddExpense from './components/entities/AddExpense';
 import Reports from './components/entities/Reports';
 import Informs from './components/entities/Informs';
 import Expenses from './components/entities/Expenses';
+import Cards from './components/entities/Cards';
 
 class App extends Component{
   render(){
@@ -26,6 +27,7 @@ class App extends Component{
               <Route path="/reports" exact component={Reports}></Route>
               <Route path="/informs" exact component={Informs}></Route>
               <Route path="/expenses" exact component={Expenses}></Route>
+              <Route path="/cards" exact component={Cards}></Route>
             </Switch>
           </Grid>
         </MuiThemeProvider>

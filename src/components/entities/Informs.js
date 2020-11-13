@@ -28,6 +28,29 @@ const style = {
   }
 
 class Informs extends Component {
+
+    state = {
+        inform: {
+            paidMethod:'',
+            easyOption:'',
+            sinceDate:'',
+            untilDate:''
+        }
+    }
+
+    onChange = e => {
+        let inform = Object.assign({}, this.state.inform);
+        inform[e.target.name] = e.target.value;
+        this.setState({
+            inform : inform 
+        })
+    }
+
+    createInform = e => {
+        e.preventDefault();
+        console.log(this.state.inform);
+    }
+
     render() {
         return (
             <Container disableGutters maxWidth="xl">
@@ -43,7 +66,7 @@ class Informs extends Component {
                             <form style={style.form}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="paidMethod" onChange={this.onChange} value={this.state.inform.paidMethod} style={style.select} fullWidth>
                                             <MenuItem value="" disabled>Método de pago</MenuItem>
                                             <MenuItem value={"EF"}>Efectivo</MenuItem>
                                             <MenuItem value={"TD"}>Tarjeta de débito</MenuItem>
@@ -52,21 +75,21 @@ class Informs extends Component {
                                         </Select>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="easyOption" onChange={this.onChange} value={this.state.inform.easyOption} style={style.select} fullWidth>
                                             <MenuItem value="" disabled>Opciones sencillas</MenuItem>
-                                            <MenuItem value={"US"}>Última semana</MenuItem>
-                                            <MenuItem value={"UQ"}>Última quincena</MenuItem>
-                                            <MenuItem value={"UM"}>Último mes</MenuItem>
+                                            <MenuItem value={"LW"}>Última semana</MenuItem>
+                                            <MenuItem value={"LQ"}>Última quincena</MenuItem>
+                                            <MenuItem value={"LM"}>Último mes</MenuItem>
                                         </Select>
                                     </Grid>    
                                     <Grid item md={6} xs={12}>
-                                        <TextField name="Date" type="date" style={style.select} fullWidth/>
+                                        <TextField name="sinceDate" type="date" onChange={this.onChange} value={this.state.inform.sinceDate} style={style.select} fullWidth/>
                                     </Grid>
                                     <Grid item md={6} xs={12}>
-                                        <TextField name="Date" type="date" style={style.select} fullWidth/>
+                                        <TextField name="untilDate" type="date" onChange={this.onChange} value={this.state.inform.untilDate} style={style.select} fullWidth/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">
+                                        <Button type="submit" onClick={this.createInform} variant="contained" fullWidth size="large" style={style.submit} color="primary">
                                             Buscar
                                         </Button> 
                                     </Grid>

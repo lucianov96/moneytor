@@ -28,6 +28,31 @@ const style = {
   }
 
 class Reports extends Component {
+    state = {
+        report: {
+            description:'',
+            group:'',
+            paidMethod:'',
+            amountCondition:'',
+            amount:'',
+            dateCondition:'',
+            date:''
+        }
+    }
+
+    onChange = e => {
+        let report = Object.assign({}, this.state.report);
+        report[e.target.name] = e.target.value;
+        this.setState({
+            report : report 
+        })
+    }
+
+    searchExpenses = e => {
+        e.preventDefault();
+        console.log(this.state.report);
+    }
+
     render() {
         return (
             <Container disableGutters maxWidth="xl">
@@ -43,15 +68,15 @@ class Reports extends Component {
                             <form style={style.form}>
                                 <Grid container spacing={2}>   
                                     <Grid item xs={12}>
-                                        <TextField name="Description" fullWidth label="Descripción"/>
+                                        <TextField name="description" onChange={this.onChange} value={this.state.report.description} fullWidth label="Descripción"/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="group" onChange={this.onChange} value={this.state.report.group} style={style.select} fullWidth>
                                             <MenuItem value="">Grupo</MenuItem>
                                         </Select>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="paidMethod" onChange={this.onChange} value={this.state.report.paidMethod} style={style.select} fullWidth>
                                             <MenuItem value="" disabled>Método de pago</MenuItem>
                                             <MenuItem value={"EF"}>Efectivo</MenuItem>
                                             <MenuItem value={"TD"}>Tarjeta de débito</MenuItem>
@@ -60,7 +85,7 @@ class Reports extends Component {
                                         </Select>
                                     </Grid> 
                                     <Grid item md={6} xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="amountCondition" onChange={this.onChange} value={this.state.report.amountCondition} style={style.select} fullWidth>
                                             <MenuItem value="" disabled>El importe debe ser</MenuItem>
                                             <MenuItem value={"equal"}>Igual a</MenuItem>
                                             <MenuItem value={"less"}>Mayor a</MenuItem>
@@ -68,10 +93,10 @@ class Reports extends Component {
                                         </Select>
                                     </Grid>    
                                     <Grid item md={6} xs={12}>
-                                        <TextField name="Amount" fullWidth label="Importe"/>
+                                        <TextField name="amount" onChange={this.onChange} value={this.state.report.amount} fullWidth label="Importe"/>
                                     </Grid>
                                     <Grid item md={6} xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="dateCondition" onChange={this.onChange} value={this.state.report.dateCondition} style={style.select} fullWidth>
                                             <MenuItem value="" disabled>La fecha debe ser</MenuItem>
                                             <MenuItem value={"equal"}>Igual a</MenuItem>
                                             <MenuItem value={"less"}>Mayor a</MenuItem>
@@ -79,10 +104,10 @@ class Reports extends Component {
                                         </Select>
                                     </Grid>    
                                     <Grid item md={6} xs={12}>
-                                        <TextField name="Date" type="date" style={style.select} fullWidth/>
+                                        <TextField name="date" onChange={this.onChange} value={this.state.report.date} type="date" style={style.select} fullWidth/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">
+                                        <Button type="submit" onClick={this.searchExpenses} variant="contained" fullWidth size="large" style={style.submit} color="primary">
                                             Buscar
                                         </Button> 
                                     </Grid>

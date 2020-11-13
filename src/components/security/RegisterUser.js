@@ -24,6 +24,27 @@ const style = {
   }
 
 class RegisterUser extends Component {
+    state = {
+        user: {
+            user:'',
+            email:'',
+            password:''
+        }
+    }
+
+    onChange = e => {
+        let user = Object.assign({}, this.state.user);
+        user[e.target.name] = e.target.value;
+        this.setState({
+            user : user 
+        })
+    }
+
+    registerUser = e => {
+        e.preventDefault();
+        console.log(this.state.user);
+    }
+
     render() {
         return (
             <Container maxWidth="sm">
@@ -34,16 +55,16 @@ class RegisterUser extends Component {
                     <form style={style.form}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <TextField name="User" fullWidth label="Usuario"/>
+                                <TextField name="user" onChange={this.onChange} value={this.state.user.user} fullWidth label="Usuario"/>
                             </Grid>
                             <Grid item xs={12}>
-                                <TextField name="Email" fullWidth label="Email"/>
+                                <TextField name="email" onChange={this.onChange} value={this.state.user.email} fullWidth label="Email"/>
                             </Grid>
                             <Grid item xs={12}>
-                                <TextField type ="password" name="Contraseña" fullWidth label="Contraseña"/>
+                                <TextField type="password" name="password" onChange={this.onChange} value={this.state.user.password} fullWidth label="Contraseña"/>
                             </Grid>
                             <Grid item xs={12}>
-                                <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">
+                                <Button type="submit" onClick={this.registerUser} variant="contained" fullWidth size="large" style={style.submit} color="primary">
                                     Registrarse
                                 </Button> 
                             </Grid>

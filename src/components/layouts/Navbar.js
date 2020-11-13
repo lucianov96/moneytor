@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar, Typography, Button, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 const styles = theme => ({
     sectionDesktop: {
@@ -22,6 +24,10 @@ const styles = theme => ({
   });
 
 class Navbar extends Component {
+    constructor() {
+        super()
+        this.state = {isUserLogged: false}
+    }
     render() {
         const { classes } = this.props;
         return (
@@ -35,9 +41,10 @@ class Navbar extends Component {
                         <div className={classes.sectionDesktop}>
                             <Button color="inherit">Login</Button>
                         </div>
-                        <div className={classes.sectionDesktop}>
-                            <Button color="inherit">Sign in</Button>
-                        </div>
+                        {this.state.isUserLogged 
+                        ? <LogoutButton/>
+                        : <LoginButton/>
+                        }
                         <div className={classes.sectionMobile}>
                             <IconButton color="inherit">
                                 <i className ="material-icons">more_vert</i>

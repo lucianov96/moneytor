@@ -31,6 +31,28 @@ const style = {
   }
 
 class AddExpense extends Component {
+    state = {
+        expense: {
+            description:'',
+            group:'',
+            paidMethod:'',
+            amount:''
+        }
+    }
+
+    onChange = e => {
+        let expense = Object.assign({}, this.state.expense);
+        expense[e.target.name] = e.target.value;
+        this.setState({
+            expense : expense 
+        })
+    }
+
+    registerExpense = e => {
+        e.preventDefault();
+        console.log(this.state.expense);
+    }
+
     render() {
         return (
             <Container disableGutters maxWidth="xl">
@@ -46,16 +68,16 @@ class AddExpense extends Component {
                             <form style={style.form}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
-                                        <TextField name="Description" fullWidth label="Descripcion del gasto"/>
+                                        <TextField name="description" onChange={this.onChange} value={this.state.expense.description} fullWidth label="Descripcion del gasto"/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="group" onChange={this.onChange} value={this.state.expense.group} style={style.select} fullWidth>
                                             <MenuItem value="" disabled>Grupo</MenuItem>
                                             <MenuItem value={"VS"}>Grupo 1</MenuItem>
                                         </Select>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select displayEmpty value="" style={style.select} fullWidth>
+                                        <Select displayEmpty name="paidMethod" onChange={this.onChange} value={this.state.expense.paidMethod} style={style.select} fullWidth>
                                             <MenuItem value="" disabled>Método de pago</MenuItem>
                                             <MenuItem value={"EF"}>Efectivo</MenuItem>
                                             <MenuItem value={"TD"}>Tarjeta de débito</MenuItem>
@@ -64,10 +86,10 @@ class AddExpense extends Component {
                                         </Select>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <TextField type="number" name="Amount" fullWidth label="Importe"/>
+                                        <TextField type="number" name="amount" onChange={this.onChange} value={this.state.expense.amount} fullWidth label="Importe"/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">
+                                        <Button type="submit" onClick={this.registerExpense} variant="contained" fullWidth size="large" style={style.submit} color="primary">
                                             Registrar Gasto
                                         </Button> 
                                     </Grid>

@@ -31,6 +31,29 @@ const style = {
   }
 
 class AddCard extends Component {
+
+    state = {
+        card: {
+            firstFourNumbers:'',
+            lastFourNumbers:'',
+            cardType:'',
+            mark:''
+        }
+    }
+
+    onChange = e => {
+        let card = Object.assign({}, this.state.card);
+        card[e.target.name] = e.target.value;
+        this.setState({
+            card : card 
+        })
+    }
+
+    registerCard = e => {
+        e.preventDefault();
+        console.log(this.state.card);
+    }
+
     render() {
         return (
             <Container disableGutters maxWidth="xl">
@@ -50,7 +73,7 @@ class AddCard extends Component {
                                         onInput={(e)=>{ 
                                             e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,4)
                                         }}
-                                        type ="number" name="FirstNumbers" fullWidth/>
+                                        type ="number" name="firstFourNumbers" onChange={this.onChange} value={this.state.card.firstFourNumbers} fullWidth/>
                                     </Grid>
                                     <Grid item xs={4}>
                                         <div style={style.center}>
@@ -64,23 +87,23 @@ class AddCard extends Component {
                                         onInput={(e)=>{ 
                                             e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,4)
                                         }}
-                                        min={0} type ="number" name="FinalNumbers" fullWidth/>
+                                        min={0} type ="number" name="lastFourNumbers" onChange={this.onChange} value={this.state.card.lastFourNumbers} fullWidth/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select labelId="mark" id="demo-simple-select" style={style.select} fullWidth>
+                                        <Select name="cardType" onChange={this.onChange} value={this.state.card.cardType} style={style.select} fullWidth>
                                             <MenuItem value={"Debito"}>Tarjeta de débito</MenuItem>
                                             <MenuItem value={"Credito"}>Tarjeta de crédito</MenuItem>
                                         </Select>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Select labelId="mark" id="demo-simple-select" style={style.select} fullWidth>
+                                        <Select name="mark" onChange={this.onChange} value={this.state.card.mark} style={style.select} fullWidth>
                                             <MenuItem value={"VS"}>VISA</MenuItem>
                                             <MenuItem value={"MC"}>Master Card</MenuItem>
                                             <MenuItem value={"AE"}>American Express</MenuItem>
                                         </Select>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button type="submit" variant="contained" fullWidth size="large" style={style.submit} color="primary">
+                                        <Button type="submit" onClick={this.registerCard} variant="contained" fullWidth size="large" style={style.submit} color="primary">
                                             Registrar Tarjeta
                                         </Button> 
                                     </Grid>
